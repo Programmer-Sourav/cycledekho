@@ -75,6 +75,6 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 ### Features: 
 1. E-commerce functionalities in react (yet to complete)
    - controlled inputs
-   - enahancements like recently viewed with session storage
+   - enahancements like recently viewed with session storage, filter by colors etc.
 3. Back-end APIs/models
    
