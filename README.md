@@ -73,7 +73,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 ###  E-commerce Functionalities
 1. MUI/css designs are copied from some other source.
 ### Features: 
-1. E-commerce functionalities in react (yet to complete)
+1. E-commerce functionalities in react
    - controlled inputs
    - enahancements like recently viewed with session storage, filter by colors etc.
 3. Back-end APIs/models
