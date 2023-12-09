@@ -68,3 +68,13 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+###  E-commerce Functionalities
+1. MUI/css designs are copied from some other source.
+### Features: 
+1. E-commerce functionalities in react (yet to complete)
+   - controlled inputs
+   - enahancements like recently viewed with session storage
+3. Back-end APIs/models
+   
