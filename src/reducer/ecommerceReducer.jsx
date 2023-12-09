@@ -10,6 +10,7 @@ export const initialState = {
     gender: "Male",
     sortByReview: false,
     sortByPrice: false,
+    search: "",
     totalCartPrice: 0
 }
 
@@ -23,7 +24,11 @@ export const ECOMMERCE_ACTIONS = {
     SORT_BY_PRICE: "SORT_BY_PRICE",
     SORT_BY_REVIEW: "SORT_BY_REVIEW",
     ADD_TO_CART: "ADD_TO_CART",
-    RECENTLY_VIEWED: "RECENTLY_VIEWED"
+    REMOVE_FROM_CART: "DELETE_FROM_CART",
+    ADD_TO_WISHLIST: "ADD_TO_WISHLIST",
+    REMOVE_FROM_WISHLIST: "REMOVE_FROM_WISHLIST",
+    RECENTLY_VIEWED: "RECENTLY_VIEWED",
+    SEARCH_CHANGE : "SEARCH_CHANGE"
 
 }
 
@@ -42,16 +47,34 @@ export default function ecommerceReducer (state, action) {
         case ECOMMERCE_ACTIONS.FILTERED_LIST: 
         return {...state, filteredList : action.payload}
         case ECOMMERCE_ACTIONS.GENDER_LIST:
+            console.log(555, action.payload)
         return {...state, gender : action.payload}  
         case ECOMMERCE_ACTIONS.SORT_BY_PRICE: 
-        return {...state,  sortByPrice: action.payload}
-        case ECOMMERCE_ACTIONS.SORT_BY_REVIEW:
-        return {...state, sortByReview: action.payload}  
+        console.log(444, !state.sortByPrice)  
+        return {...state,  sortByPrice: !state.sortByPrice}
+        case ECOMMERCE_ACTIONS.SORT_BY_REVIEW:  
+        return {...state, sortByReview: !state.sortByReview}  
         case ECOMMERCE_ACTIONS.ADD_TO_CART: 
         return {...state, cart : action.payload}    
         case ECOMMERCE_ACTIONS.RECENTLY_VIEWED: 
-        console.log(222, action.payload)
         return {...state, recentlyViewedList: [...state.recentlyViewedList, action.payload]}
+        case ECOMMERCE_ACTIONS.SEARCH_CHANGE: 
+        return {...state, search: action.payload}
+        case ECOMMERCE_ACTIONS.ADD_TO_CART: 
+        const itemId = action.payload._id;
+
+        const isItemInCart = state.cart.find((cartItem) => cartItem._id === itemId) !== undefined;
+
+        
+        const updatedCart = state.cart.map((cartItem) =>
+          cartItem._id === itemId
+            ? { ...cartItem, quantity: cartItem.quantity + 1 }
+            : cartItem
+        );
+        return {
+          ...state,
+          cart: isItemInCart ? updatedCart : [...updatedCart, { ...action.payload, quantity: 1 }],
+        };
         case "DEFAULT": 
         return state;
     }

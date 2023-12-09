@@ -36,7 +36,7 @@ export default function IndividualProduct () {
 
 
   return (
-    <div class="container">
+  <div class="container">
   <div class="image">
     <img src="https://contents.mediadecathlon.com/p2563201/8ef26012c7fe024e92e8a6d8c75e1271/p2563201.jpg?format=auto&quality=70&f=300x0" alt="Image description" height="300px" width="512px"/>
    

@@ -21,16 +21,16 @@ export default function ApplicationProvider({children}){
       dispatch({type: ECOMMERCE_ACTIONS.CHECK_CATEGORIES, payload: category})
     }
 
-    const onChangeGender = (gender) =>{
-      dispatch({type: ECOMMERCE_ACTIONS.GENDER_LIST, payload: gender})
+    const onChangeGender = (e) =>{
+      dispatch({type: ECOMMERCE_ACTIONS.GENDER_LIST, payload: e.target.value})
     }
 
-    const onChangeReview = (reviewBoolean) =>{
-      dispatch({type: ECOMMERCE_ACTIONS.SORT_BY_REVIEW, payload: reviewBoolean})
+    const onChangeReview = (e) =>{
+      dispatch({type: ECOMMERCE_ACTIONS.SORT_BY_REVIEW})
     }
 
-    const onChangePrice = (priceBoolean) =>{
-      dispatch({type: ECOMMERCE_ACTIONS.SORT_BY_PRICE, payload: priceBoolean})
+    const onChangePrice = (e) =>{
+      dispatch({type: ECOMMERCE_ACTIONS.SORT_BY_PRICE})
     }
 
 
@@ -38,16 +38,19 @@ export default function ApplicationProvider({children}){
       dispatch({type: ECOMMERCE_ACTIONS.ADD_TO_CART, payload: product})
     }
 
-    
+    const onSearchInputChange = (e) =>{
+      dispatch({type: ECOMMERCE_ACTIONS.SEARCH_CHANGE, payload: e.target.value})
+    }
 
   
     return(
      <ApplicationContext.Provider value={{categories: state.categories, checkedCategories: state.checkedCategories ,
        cycles: state.allCycles, colorState: state.checkedColor, onChangeColor, onChangeCategory,  
        filteredList: state.filteredList, dispatch, genderState: state.gender, onChangeGender,  reviewState: state.sortByReview, 
-       priceState: state.sortByReview,
+       priceState: state.sortByPrice,
        onChangeReview, onChangePrice, 
        cartState: state.cart, addToCart,
-      recentlyViewed: state.recentlyViewedList}}>{children}</ApplicationContext.Provider>
+      recentlyViewed: state.recentlyViewedList,
+      searchState: state.search, onSearchInputChange}}>{children}</ApplicationContext.Provider>
     )
 }

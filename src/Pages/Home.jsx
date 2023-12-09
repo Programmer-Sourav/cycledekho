@@ -42,7 +42,7 @@ function Home() {
 
   const { cycles , categories, colorState, onChangeColor, 
     onChangeCategory, checkedCategories, genderState, onChangeGender,
-    onChangeReview, onChangePrice, reviewState, priceState, recentlyViewed} = useContext(ApplicationContext)
+    onChangeReview, onChangePrice, reviewState, priceState, recentlyViewed, searchState, onSearchInputChange} = useContext(ApplicationContext)
 
     const [recentViews, setRecentViews] = useState([])
   
@@ -94,7 +94,13 @@ filteredList = [...cycles].filter((cycle) => {
   }
 
   if(priceState){
-    filteredList = [...filteredList].sort((a,b)=>(a.price>b.price ? 1: -1))
+    filteredList = [...filteredList].sort((a,b)=>(parseInt(a.price)>parseInt(b.price) ? 1: -1))
+  }
+
+  if(searchState){
+    filteredList = [...filteredList].filter((searchItem)=>(searchItem.productName.toLowerCase().includes(searchState.toLowerCase())) ||
+     searchItem.brandDetails.brand.toLowerCase().includes(searchState.toLowerCase()))
+    console.log(666, filteredList)
   }
 
   const filteredListByCat = (category) =>{
@@ -109,7 +115,6 @@ filteredList = [...cycles].filter((cycle) => {
 
 
   useEffect(()=>{
-    console.log(111, recentlyViewed)
     sessionStorage.setItem('recentlyViewed', JSON.stringify(recentlyViewed));
   },[])
 
@@ -162,7 +167,9 @@ filteredList = [...cycles].filter((cycle) => {
           <div style={{ display: "flex", alignItems: "center", marginRight: "auto" }}>
             <SearchIcon style={{ color: "#fff" }} />
             <InputBase
-              placeholder="Search"
+              placeholder="Search By Name or Brand"
+              value={searchState}
+              onChange={(e)=>{onSearchInputChange(e)}}
               style={{ marginLeft: "8px", fontSize: "18px", flexGrow: 1, border: "1px solid #fff", paddingLeft: "8px", width: "376px", color: "#FFF" }}
             />
           </div>
@@ -269,20 +276,20 @@ filteredList = [...cycles].filter((cycle) => {
     <Slider value={[1000, 20000]} valueLabelDisplay="auto" min={1000} max={20000} step={100} />
     <Typography variant="subtitle1">Sort By</Typography>
     <label>
-      <input type="radio" value={reviewState} onChange={(e) => onChangeReview(e.target.value)} />
+      <input type="radio" value="review" checked={reviewState} onChange={() => onChangeReview()} />
       Review
     </label>
     <label>
-      <input type="radio" value={priceState} onChange={(e) => onChangePrice(e.target.value)} />
+      <input type="radio" value="price" checked={priceState} onChange={() => onChangePrice()} />
       Price
     </label>
     <label>Gender</label>
     <label>
-      <input type="radio" value={genderState} onChange={(e) => onChangeGender("Male")} />
+      <input type="radio" value="Male"   checked={genderState === "Male"} onChange={(e) => onChangeGender(e)} />
       Male
     </label>
     <label>
-      <input type="radio" value={genderState} onChange={(e) => onChangeGender("Female")} />
+      <input type="radio" value="Female" checked={genderState === "Female"} onChange={(e) => onChangeGender(e)} />
       Female
     </label>
   </FormControl>

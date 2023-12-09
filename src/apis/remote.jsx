@@ -21,7 +21,7 @@ async function getAllCategories(dispatch){
     try{
    const response = await fetch(allCategoryUrl)
    const allCategories = await response.json()
-   console.log(111, allCategories.categories)
+
    dispatch({type: ECOMMERCE_ACTIONS.ALL_CATEGORIES, payload: allCategories.categories})
     }
     catch(error){
