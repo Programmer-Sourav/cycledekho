@@ -1,0 +1,61 @@
+.container {
+    display: flex;
+    /* gap between image and content */
+    gap: 20px;
+  }
+  
+  .image {
+    /* set image width */
+    width: 200px;
+    /* maintain image aspect ratio */
+    aspect-ratio: 1/1;
+    object-fit: cover;
+  }
+  
+  .content {
+    /* flex: 1 to make content fill remaining space */
+    flex: 1;
+  }
+  
+  .title {
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+  
+  .description {
+    margin-bottom: 10px;
+  }
+  
+  .button {
+    /* align button to the right */
+    align-self: flex-end;
+  }
+
+
+ /* Add these styles to your CSS file or style tag */
+
+.slideshow-frame {
+    position: relative;
+    overflow: hidden;
+    border: 2px solid #ddd; /* Add a border around the frame */
+    border-radius: 8px; /* Optional: Add rounded corners */
+  }
+  
+  .slideshow {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  .slide-image {
+    width: 100%; /* Ensure the image takes up the full width of the frame */
+    height: auto; /* Maintain the aspect ratio */
+  }
+  
+  /* Optional: Style for the active slide */
+  .slide-image.active {
+    border: 2px solid #3498db; /* Example border color for the active slide */
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5); /* Example box shadow for the active slide */
+  }
+  
+  
+  

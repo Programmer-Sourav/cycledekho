@@ -1,0 +1,33 @@
+.container {
+    display: flex;
+    /* gap between image and content */
+    gap: 20px;
+  }
+  
+  .image {
+    /* set image width */
+    width: 200px;
+    /* maintain image aspect ratio */
+    aspect-ratio: 1/1;
+    object-fit: cover;
+  }
+  
+  .content {
+    /* flex: 1 to make content fill remaining space */
+    flex: 1;
+  }
+  
+  .title {
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+  
+  .description {
+    margin-bottom: 10px;
+  }
+  
+  .button {
+    /* align button to the right */
+    align-self: flex-end;
+  }
+  

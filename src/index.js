@@ -3,11 +3,21 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter } from 'react-router-dom';
+import ApplicationProvider from './Provider/ApplicationContext';
+import { ApplicationContext } from './Provider/ApplicationContext';
+
+export {ApplicationContext}
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    <BrowserRouter>
+    <ApplicationProvider>
     <App />
+    </ApplicationProvider>
+    </BrowserRouter>
   </React.StrictMode>
 );
 
