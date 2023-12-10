@@ -21,8 +21,8 @@ export default function ProductCard({title, price, image, item}){
             <img src={image} alt={title} height="128px" width="128px" />
             <h4>{title}</h4>
             <p>Rs. {price}</p>
-            <button onClick={()=>{addToCart(item)}}>Add To Cart</button>
-            <button onClick={()=>{goToDetails(title, price, image)}}>View Details</button>
+            <button onClick={()=>{addToCart(item)}} className="addToCart">Add To Cart</button>
+            <button onClick={()=>{goToDetails(title, price, image)}} className="detailsdiv">View Details</button>
         </div>
     )
 }
