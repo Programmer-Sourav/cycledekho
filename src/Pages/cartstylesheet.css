@@ -1,0 +1,90 @@
+.container {
+  display: flex;
+}
+
+.scrollableList {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+.scrollableList ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.itemCard {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 10px;
+  width: 876px; 
+  margin-left: 16px;
+  margin-top: 16px;
+}
+
+.productImage {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.productInfo {
+  flex: 1;
+}
+
+.quantityControls {
+  display: flex;
+  align-items: center;
+}
+
+.quantityControls button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.quantityInput {
+  width: 60px;
+  height: auto;
+  padding: 8px;
+  margin: 16px;
+  text-align: center;
+  box-sizing: border-box; 
+}
+
+.fixedDetails {
+  flex: 0 0 512px; 
+  position: sticky;
+  top: 20px;
+  padding: 20px;
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  margin: 16px;
+}
+
+.fixedDetails h2 {
+  margin-bottom: 10px;
+}
+
+.couponInput {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+}
+
+#placeOrder {
+  width: 100%;
+  padding: 15px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 32px;
+}

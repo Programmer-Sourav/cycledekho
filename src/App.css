@@ -29,11 +29,50 @@
 }
 
 .productcardalignment{
-  margin: 8px;
+  margin-left: 8px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  padding: 16px;
+  border: "1px solid grey";
+  background: #e3f2fd;
+  text-align: left;
+}
+.productcard{
+  margin-left: 8px;
+  margin-right: 8px;
+  margin-top: 8px;
   padding: 16px;
   border: "1px solid grey";
   background: #e3f2fd;
 }
+.addToCart{
+  width: 128px;
+  height: 40px;
+  color: white;
+  text-align: center;
+  font-size: 16px;
+  background: blue;
+}
+
+.applybutton{
+  width: 128px;
+  height: 32px;
+  color: white;
+  text-align: center;
+  font-size: 16px;
+  background: green;
+}
+
+.detailsdiv{
+  width: 128px;
+  height: 40px;
+  color: white;
+  text-align: center;
+  font-size: 16px;
+  margin-left: 32px;
+  background: blueviolet;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

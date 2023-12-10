@@ -33,6 +33,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import ProductCard from "../Components/ProductCard";
 import { ApplicationContext } from "../Provider/ApplicationContext";
 import { FilterList } from "@mui/icons-material";
+import { useNavigate } from "react-router";
 
 
 
@@ -42,9 +43,15 @@ function Home() {
 
   const { cycles , categories, colorState, onChangeColor, 
     onChangeCategory, checkedCategories, genderState, onChangeGender,
-    onChangeReview, onChangePrice, reviewState, priceState, recentlyViewed, searchState, onSearchInputChange} = useContext(ApplicationContext)
+    onChangeReview, onChangePrice, reviewState, priceState, recentlyViewed, searchState, onSearchInputChange, addToCart} = useContext(ApplicationContext)
 
     const [recentViews, setRecentViews] = useState([])
+
+   const navigate = useNavigate()
+
+    const openCartPage = () =>{
+        navigate("/cart")
+    }
   
   const getCategoryTitles = (category) =>{
      switch(category.category){
@@ -182,7 +189,7 @@ filteredList = [...cycles].filter((cycle) => {
           <IconButton color="inherit" style={{ marginRight: "16px" }}>
             <FavoriteIcon />
           </IconButton>
-          <IconButton color="inherit" style={{ marginRight: "16px" }}>
+          <IconButton color="inherit" style={{ marginRight: "16px" }} onClick={()=>{openCartPage()}}>
             <ShoppingCartIcon />
           </IconButton>
         </Toolbar>
@@ -351,6 +358,7 @@ filteredList = [...cycles].filter((cycle) => {
                         title={product.productName}
                         price={product.price}
                         image="https://contents.mediadecathlon.com/p2563201/8ef26012c7fe024e92e8a6d8c75e1271/p2563201.jpg?format=auto&quality=70&f=300x0"
+                        item = {product}
                       />
                     </Grid>
                   )) : <Grid item xs={4}>No products found in this category</Grid>) : (filteredListByCat(category).length!==0 ?filteredListByCat(category).map((product, index)=>(
@@ -359,6 +367,7 @@ filteredList = [...cycles].filter((cycle) => {
                       title={product.productName}
                       price={product.price}
                       image="https://contents.mediadecathlon.com/p2563201/8ef26012c7fe024e92e8a6d8c75e1271/p2563201.jpg?format=auto&quality=70&f=300x0"
+                      item = {product}
                     />
                   </Grid>
                   )) : <Grid item xs={4}>No products found in this category</Grid>)}

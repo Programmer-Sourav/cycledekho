@@ -41,7 +41,6 @@ export default function ApplicationProvider({children}){
     const onSearchInputChange = (e) =>{
       dispatch({type: ECOMMERCE_ACTIONS.SEARCH_CHANGE, payload: e.target.value})
     }
-
   
     return(
      <ApplicationContext.Provider value={{categories: state.categories, checkedCategories: state.checkedCategories ,

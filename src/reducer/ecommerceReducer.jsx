@@ -28,7 +28,8 @@ export const ECOMMERCE_ACTIONS = {
     ADD_TO_WISHLIST: "ADD_TO_WISHLIST",
     REMOVE_FROM_WISHLIST: "REMOVE_FROM_WISHLIST",
     RECENTLY_VIEWED: "RECENTLY_VIEWED",
-    SEARCH_CHANGE : "SEARCH_CHANGE"
+    SEARCH_CHANGE : "SEARCH_CHANGE",
+    DEC_CART: "DEC_CART"
 
 }
 
@@ -53,16 +54,14 @@ export default function ecommerceReducer (state, action) {
         console.log(444, !state.sortByPrice)  
         return {...state,  sortByPrice: !state.sortByPrice}
         case ECOMMERCE_ACTIONS.SORT_BY_REVIEW:  
-        return {...state, sortByReview: !state.sortByReview}  
-        case ECOMMERCE_ACTIONS.ADD_TO_CART: 
-        return {...state, cart : action.payload}    
+        return {...state, sortByReview: !state.sortByReview}    
         case ECOMMERCE_ACTIONS.RECENTLY_VIEWED: 
         return {...state, recentlyViewedList: [...state.recentlyViewedList, action.payload]}
         case ECOMMERCE_ACTIONS.SEARCH_CHANGE: 
         return {...state, search: action.payload}
         case ECOMMERCE_ACTIONS.ADD_TO_CART: 
-        const itemId = action.payload._id;
-
+        const itemId = action.payload;
+       
         const isItemInCart = state.cart.find((cartItem) => cartItem._id === itemId) !== undefined;
 
         
@@ -71,10 +70,17 @@ export default function ecommerceReducer (state, action) {
             ? { ...cartItem, quantity: cartItem.quantity + 1 }
             : cartItem
         );
+       
         return {
           ...state,
           cart: isItemInCart ? updatedCart : [...updatedCart, { ...action.payload, quantity: 1 }],
         };
+
+        case ECOMMERCE_ACTIONS.DEC_CART: 
+        return {...state, cart: state.cart.map((cartItem)=>(cartItem._id===action.payload ? {...cartItem,  quantity: cartItem.quantity>1 ? cartItem.quantity-1 : 1} : cartItem))}
+
+
+        
         case "DEFAULT": 
         return state;
     }
